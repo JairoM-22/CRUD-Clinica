@@ -1,1 +1,21 @@
-GET http://localhost:3000/api/pacientes
+GET http://localhost:3000/api/paciente 
+
+#####
+
+GET http://localhost:3000/api/cita 
+
+#####
+
+GET http://localhost:3000/api/doctor 
+
+#####
+
+GET http://localhost:3000/api/especialidad 
+
+#####
+
+GET http://localhost:3000/api/especialista 
+
+#####
+
+GET http://localhost:3000/api/receta
