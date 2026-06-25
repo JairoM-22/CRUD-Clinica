@@ -1,13 +1,14 @@
 {
   "name": "crud-clinica",
   "version": "1.0.0",
+  "type": "module",
   "description": "��#\u0000 \u0000C\u0000R\u0000U\u0000D\u0000-\u0000C\u0000l\u0000i\u0000n\u0000i\u0000c\u0000a\u0000\r\u0000 \u0000",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "dev": "tsx watch src/server.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/server.js"
   },
   "repository": {
     "type": "git",
@@ -16,7 +17,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/JairoM-22/CRUD-Clinica/issues"
   },
@@ -25,7 +25,9 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^26.0.1",
+    "@types/pg": "^8.20.0",
     "ts-node-dev": "^2.0.0",
+    "tsx": "^4.22.4",
     "typescript": "^6.0.3"
   },
   "dependencies": {
