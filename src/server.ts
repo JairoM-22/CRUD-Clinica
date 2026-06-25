@@ -14,15 +14,40 @@ app.use(express.json())
 
 // GETTERS
 // Pacientes
-app.get("/api/paciente", async (_req, res) => {
+app.get("/api/paciente_clone", async (_req, res) => {
   try {
     const { rows } = await pool.query<Paciente>(
-      "SELECT * FROM paciente ORDER BY id DESC"
+      "SELECT * FROM paciente_clone ORDER BY id ASC"
     )
     res.json(rows)
   } catch (error) {
     console.error("Error al listar los pacientes:", error)
     res.status(500).json({ error: "Error al obtener los pacientes" })
+  }
+})
+
+
+
+app.delete("/api/paciente_clone", async (req, res) => {
+  const { id } = req.body as { id: number}
+
+  if (!id ) {
+    res.status(400).json({ error: "El campo 'id' es requerido" })
+    return
+  }
+
+  try {
+    const { rows } = await pool.query<Paciente>(
+      `DELETE FROM paciente_clone
+       WHERE ID = $1
+       RETURNING *`,
+       [id || "Anonimo"]
+    )
+
+    res.status(201).json(rows[0])
+  } catch (error) {
+    console.error("Error al crear mensaje:", error)
+    res.status(500).json({ error: "Error al crear el mensaje" })
   }
 })
 
