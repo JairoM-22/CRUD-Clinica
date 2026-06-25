@@ -25,7 +25,7 @@ app.get("/api/paciente_clone", async (_req, res) => {
     res.status(500).json({ error: "Error al obtener los pacientes" })
   }
 })
-
+//asdas
 
 
 app.delete("/api/paciente_clone", async (req, res) => {
