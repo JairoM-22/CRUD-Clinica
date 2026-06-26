@@ -1,5 +1,18 @@
-GET http://localhost:3000/api/paciente 
+GET http://localhost:3000/api/paciente_clone
 #####
+PUT http://localhost:3000/api/paciente_clone
+Content-Type: application/json
+
+{
+  "id": 3,
+  "nombre": "Juanes",
+  "correo": "juanes@email.com",
+  "fecha_nacimiento": "1990-01-15",
+  "fecha_registro": "2024-01-20"
+}
+
+
+####
 DELETE http://localhost:3000/api/paciente HTTP/1.1
 Content-Type: application/json
 
