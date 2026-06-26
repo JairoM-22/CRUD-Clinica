@@ -2,13 +2,51 @@ GET http://localhost:3000/api/paciente
 
 #####
 
+GET http://localhost:3000/api/paciente/top-5
+
+#####
+
+GET http://localhost:3000/api/paciente/sin-cita
+
+#####
+
+
+GET http://localhost:3000/api/citas/marzo/control
+
+#####
+
 GET http://localhost:3000/api/cita 
 
 #####
 
-GET http://localhost:3000/api/doctor 
+GET http://localhost:3000/api/cita/pendiente
 
 #####
+GET http://localhost:3000/api/doctor 
+
+
+#####
+GET http://localhost:3000/api/doctor/citas
+
+#####
+
+GET http://localhost:3000/api/doctor/estadisticas
+
+#####
+
+
+GET http://localhost:3000/api/doctor/citas-sobre-promedio
+
+##### 
+GET http://localhost:3000/api/doctor/especialidad
+
+#####
+GET http://localhost:3000/api/especialidad/con-multiples-doctores
+
+
+
+#####
+
 
 GET http://localhost:3000/api/especialidad 
 
@@ -25,7 +63,13 @@ GET http://localhost:3000/api/paciente
 ####
 
 GET http://localhost:3000/api/paciente_clone
+####
 
+GET http://localhost:3000/api/receta_clone
+
+##### 
+
+DELETE http://localhost:3000/api/receta/citas-canceladas
 
 
 ####
