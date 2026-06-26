@@ -71,14 +71,92 @@ GET http://localhost:3000/api/receta_clone
 
 DELETE http://localhost:3000/api/receta/citas-canceladas
 
+#####
+GET http://localhost:3000/api/paciente_clone
+#####
+PUT http://localhost:3000/api/paciente_clone
+Content-Type: application/json
+
+{
+  "id": 3,
+  "nombre": "Juanes",
+  "correo": "juanes@email.com",
+  "fecha_nacimiento": "1990-01-15",
+  "fecha_registro": "2024-01-20"
+}
+
 
 ####
-
-
-DELETE http://localhost:3000/api/paciente_clone HTTP/1.1
+DELETE http://localhost:3000/api/paciente HTTP/1.1
 Content-Type: application/json
 
 {
     "id": 2
 }
+#####
+
+
+
+
+GET http://localhost:3000/api/cita 
+#####
+DELETE http://localhost:3000/api/cita HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": 1
+}
+#####
+
+
+
+
+GET http://localhost:3000/api/doctor 
+#####
+DELETE http://localhost:3000/api/doctor HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": 1
+}
+#####
+
+
+
+GET http://localhost:3000/api/especialidad 
+#####
+DELETE http://localhost:3000/api/especialidad HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": 1
+}
+#####
+
+
+
+
+GET http://localhost:3000/api/especialista 
+#####
+DELETE http://localhost:3000/api/especialista HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": 1
+}
+#####
+
+
+
+
+GET http://localhost:3000/api/receta
 ####
+DELETE http://localhost:3000/api/receta HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": 1
+}
+#####
+
+
