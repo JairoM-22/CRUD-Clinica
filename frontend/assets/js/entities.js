@@ -10,7 +10,7 @@
 //   CitaEstado = "pendiente" | "confirmada" | "cancelada" | "completada").
 // Nota: algunas consultas SQL del backend referencian 'realizada', que NO
 // está en el tipo. Respetamos el tipo declarado como fuente de verdad.
-const ESTADOS_CITA = ["pendiente", "confirmada", "cancelada", "completada"];
+const ESTADOS_CITA = ["pendiente", "confirmada", "cancelada", "realizada"];
 
 // Helper para fecha de hoy en formato YYYY-MM-DD (para inputs date).
 function hoyISO() {
