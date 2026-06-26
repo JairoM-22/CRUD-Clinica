@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clínica · Panel de gestión</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <!-- Sprite de íconos (línea, 24x24) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <g id="icon-grid"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z" /></g>
+      <g id="icon-user"><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4 4-6 8-6s8 2 8 6" /></g>
+      <g id="icon-stethoscope"><path d="M6 3v6a4 4 0 0 0 8 0V3" /><path d="M10 17a6 6 0 0 0 6-6" /><circle cx="18" cy="9" r="2" /></g>
+      <g id="icon-calendar"><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M3 9h18M8 3v4M16 3v4" /></g>
+      <g id="icon-tag"><path d="M3 12V5a2 2 0 0 1 2-2h7l9 9-9 9z" /><circle cx="8" cy="8" r="1.4" /></g>
+      <g id="icon-link"><path d="M9 15l6-6" /><path d="M11 6l1-1a4 4 0 0 1 6 6l-1 1" /><path d="M13 18l-1 1a4 4 0 0 1-6-6l1-1" /></g>
+      <g id="icon-pill"><rect x="3" y="9" width="18" height="6" rx="3" transform="rotate(45 12 12)" /><path d="M9.5 9.5l5 5" /></g>
+      <g id="icon-plus"><path d="M12 5v14M5 12h14" /></g>
+      <g id="icon-search"><circle cx="11" cy="11" r="7" /><path d="M21 21l-4-4" /></g>
+      <g id="icon-edit"><path d="M4 20h4L20 8l-4-4L4 16z" /><path d="M14 6l4 4" /></g>
+      <g id="icon-trash"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13" /></g>
+      <g id="icon-x"><path d="M6 6l12 12M18 6L6 18" /></g>
+      <g id="icon-check"><path d="M4 12l5 5L20 6" /></g>
+      <g id="icon-alert"><path d="M12 3l10 18H2z" /><path d="M12 10v5M12 18h.01" /></g>
+      <g id="icon-chart"><path d="M4 20V4M4 20h16M8 16v-5M12 16V8M16 16v-8" /></g>
+      <g id="icon-menu"><path d="M4 6h16M4 12h16M4 18h16" /></g>
+    </defs>
+  </svg>
+
+  <!-- Banner de conexión -->
+  <div id="conexion" class="conexion oculto">
+    <span class="conexion__ico"><svg class="ico"><use href="#icon-alert"></use></svg></span>
+    <div class="conexion__txt">
+      <strong>No hay conexión con el backend.</strong>
+      <span id="conexion-msg"></span>
+    </div>
+    <div class="conexion__form">
+      <input id="conexion-base" class="input input--mini" type="text" aria-label="URL del backend" />
+      <button id="conexion-retry" class="btn btn--primary btn--sm">Reintentar</button>
+    </div>
+  </div>
+
+  <div class="layout">
+    <!-- Barra lateral -->
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand__mark">✚</span>
+        <span class="brand__name">Clínica<span class="brand__dim">·panel</span></span>
+      </div>
+
+      <nav class="nav">
+        <a class="nav__link" href="#/dashboard">
+          <span class="nav__ico"><svg class="ico"><use href="#icon-grid"></use></svg></span>
+          <span>Resumen</span>
+        </a>
+        <p class="nav__group">Registros</p>
+        <div id="nav-entidades"></div>
+        <p class="nav__group">Analítica</p>
+        <a class="nav__link" href="#/consultas">
+          <span class="nav__ico"><svg class="ico"><use href="#icon-chart"></use></svg></span>
+          <span>Consultas</span>
+        </a>
+      </nav>
+
+      <div class="sidebar__foot">
+        <span id="estado-punto" class="punto punto--off" title="Sin conexión"></span>
+        <span class="sidebar__foot-txt">Backend en :3000</span>
+      </div>
+    </aside>
+
+    <div id="backdrop" class="backdrop"></div>
+
+    <!-- Contenido -->
+    <main class="main">
+      <header class="topbar">
+        <button id="menu-toggle" class="btn-ico topbar__menu" aria-label="Abrir menú">
+          <svg class="ico"><use href="#icon-menu"></use></svg>
+        </button>
+        <span class="topbar__title">Gestión clínica</span>
+      </header>
+
+      <section id="vista" class="vista"></section>
+    </main>
+  </div>
+
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/entities.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

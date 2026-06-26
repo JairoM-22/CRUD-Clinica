@@ -222,7 +222,7 @@ import { inicializarBD } from "./init.js"
         `DELETE FROM doctor
         WHERE ID = $1
         RETURNING *`,
-        [id || "Anonimo"]
+        [id]
       )
 
       res.status(201).json(rows[0])

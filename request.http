@@ -1,3 +1,17 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ################################
 ##       PACIENTES
 ################################
@@ -36,6 +50,15 @@ Content-Type: application/json
 {
     "id": 1
 }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -89,6 +112,21 @@ Content-Type: application/json
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ################################
 ##       DOCTOR
 ################################
@@ -112,9 +150,9 @@ PUT http://localhost:3000/api/doctor
 Content-Type: application/json
 
 {
-    "id": 21,
-    "nombre": "Dr.Carlos Ramírez",
-    "correo": "j.ramirez@clinica.com",
+    "id": 1,
+    "nombre": "Dr. Carlos Ramírez",
+    "correo": "j.ramirez@cliniaca.com",
     "telefono": "3001234567",
     "numero_consultorio": 101
 }
@@ -126,6 +164,21 @@ Content-Type: application/json
 {
     "id": 1
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ################################
@@ -144,13 +197,39 @@ Content-Type: application/json
   "descripcion": "Cirujano maxilofacial"
 }
 
+### PUT - Actualizar Especialidad
+
+PUT http://localhost:3000/api/especialidad
+Content-Type: application/json
+
+{
+    "id": 1,
+    "nombre": "Cardiocirugua",
+    "descripcion": "Especialidad dedicada al diagnóstico y tratamiento de enfermedades del corazón y del sistema circulatorio"
+}
+
 ### DELETE - Eliminar especialidad
 DELETE http://localhost:3000/api/especialidad HTTP/1.1
 Content-Type: application/json
 
 {
-    "id": 1
+    "id": 11
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ################################
@@ -169,6 +248,18 @@ Content-Type: application/json
   "especialidad_id": 2
 }
 
+### PUT - Actualizar Especialista
+
+PUT http://localhost:3000/api/especialista
+Content-Type: application/json
+
+{
+    "id": 24,
+    "doctor_id": 19,
+    "especialidad_id": 11
+ }
+
+
 ### DELETE - Eliminar especialista
 DELETE http://localhost:3000/api/especialista HTTP/1.1
 Content-Type: application/json
@@ -178,6 +269,20 @@ Content-Type: application/json
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ################################
 ##       RECETAS
 ################################
@@ -185,8 +290,6 @@ Content-Type: application/json
 ### GET - Listar todas las recetas
 GET http://localhost:3000/api/receta
 
-### GET - Clonar receta
-GET http://localhost:3000/api/receta_clone
 
 ### POST - Crear receta
 POST http://localhost:3000/api/receta HTTP/1.1
@@ -200,13 +303,48 @@ Content-Type: application/json
   "fecha_emision": "2024-03-01"
 }
 
+### PUT - Actualizar Receta
+
+PUT http://localhost:3000/api/receta
+Content-Type: application/json
+
+{
+    "id": 61,
+    "cita_id": 2,
+    "medicamento": "paracetamol",
+    "dosis": "200mg",
+    "instruccion": "20mg cada 2 horas",
+    "fecha_emision": "2024-03-01T05:00:00.000Z"
+ }
+
 ### DELETE - Eliminar receta
 DELETE http://localhost:3000/api/receta HTTP/1.1
 Content-Type: application/json
 
 {
-    "id": 1
+    "id": 61
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ################################
