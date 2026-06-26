@@ -61,7 +61,7 @@ import { inicializarBD } from "./init.js"
       const { rows } = await pool.query<Paciente>(
         `UPDATE paciente
         SET nombre = $1, correo = $2, telefono = $3, fecha_nacimiento = $4, fecha_registro = $5
-        WHERE id = $5
+        WHERE id = $6
         RETURNING *`,
         [nombre, correo, telefono, fecha_nacimiento, fecha_registro, id]
       );

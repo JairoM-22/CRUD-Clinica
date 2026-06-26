@@ -39,6 +39,7 @@ Content-Type: application/json
   "id": 5,
   "nombre": "Juanes",
   "correo": "juanes@email.com",
+  "telefono": "3008110032",
   "fecha_nacimiento": "1990-01-15",
   "fecha_registro": "2024-01-20"
 }

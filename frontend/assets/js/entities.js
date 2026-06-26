@@ -64,8 +64,6 @@ const ENTITIES = {
         label: "Teléfono",
         type: "text",
         required: true,
-        lockedOnEdit: true,
-        hint: "El backend solo registra el teléfono al crear; al editar no se modifica.",
       },
       {
         name: "fecha_nacimiento",
