@@ -1,91 +1,35 @@
-GET http://localhost:3000/api/paciente 
+################################
+##       PACIENTES
+################################
 
-#####
-
-GET http://localhost:3000/api/paciente/top-5
-
-#####
-
-GET http://localhost:3000/api/paciente/sin-cita
-
-#####
-
-
-GET http://localhost:3000/api/citas/marzo/control
-
-#####
-
-GET http://localhost:3000/api/cita 
-
-#####
-
-GET http://localhost:3000/api/cita/pendiente
-
-#####
-GET http://localhost:3000/api/doctor 
-
-
-#####
-GET http://localhost:3000/api/doctor/citas
-
-#####
-
-GET http://localhost:3000/api/doctor/estadisticas
-
-#####
-
-
-GET http://localhost:3000/api/doctor/citas-sobre-promedio
-
-##### 
-GET http://localhost:3000/api/doctor/especialidad
-
-#####
-GET http://localhost:3000/api/especialidad/con-multiples-doctores
-
-
-
-#####
-
-
-GET http://localhost:3000/api/especialidad 
-
-#####
-
-GET http://localhost:3000/api/especialista 
-
-#####
-
+### GET - Listar todos los pacientes
 GET http://localhost:3000/api/paciente
 
+### POST - Crear paciente
+POST http://localhost:3000/api/paciente HTTP/1.1
+Content-Type: application/json
 
+{
+  "nombre": "Pruebaasda",
+  "correo": "prueba@pruebiasdta.com",
+  "telefono": "30081101023",
+  "fecha_nacimiento": "1981-10-23",
+  "fecha_registro": "2024-02-08 11:30:00"
+}
 
-####
-
-GET http://localhost:3000/api/paciente_clone
-####
-
-GET http://localhost:3000/api/receta_clone
-
-##### 
-
-DELETE http://localhost:3000/api/receta/citas-canceladas
-
-#####
-GET http://localhost:3000/api/paciente
-#####
+### PUT - Actualizar paciente
 PUT http://localhost:3000/api/paciente
 Content-Type: application/json
+
 {
-  "id": 3,
+  "id": 5,
   "nombre": "Juanes",
   "correo": "juanes@email.com",
   "fecha_nacimiento": "1990-01-15",
   "fecha_registro": "2024-01-20"
 }
 
-
-####
+### DELETE - Eliminar paciente
 DELETE http://localhost:3000/api/paciente HTTP/1.1
 Content-Type: application/json
 
@@ -94,108 +38,211 @@ Content-Type: application/json
 }
 
 
-#####
 
-POST http://localhost:3000/api/paciente HTTP/1.1
+
+
+
+
+
+################################
+##       CITAS
+################################
+
+### GET - Listar todas las citas
+GET http://localhost:3000/api/cita
+
+### POST - Crear cita
+POST http://localhost:3000/api/cita HTTP/1.1
 Content-Type: application/json
 
 {
-  "nombre": "Pruebaaasdasdasdsd",
-  "correo": "prueba@prasdsauebita.com",
-  "telefono": "3008111230023",
-  "fecha_nacimiento": "1981-10-23",
-  "fecha_registro": "2024-02-08 11:30:00"
+  "paciente_id": 1,
+  "doctor_id": 2, 
+  "fecha": "2024-03-01", 
+  "hora": "09:00:00", 
+  "motivo_consulta": "Control de presión arterial", 
+  "estado": "realizada"
 }
 
-
-#####
-
-
-
-GET http://localhost:3000/api/cita 
-#####
+### PUT - Actualizar cita
 PUT http://localhost:3000/api/cita
 Content-Type: application/json
-{
-    "id": 1,
-    "paciente_id": 1,
-    "doctor_id": 1,
-    "fecha": "2024-03-01T05:00:00.000Z",
-    "hora": "09:00:00",
-    "motivo_consulta": "Control de presión arterial",
-    "estado": "realizada"
-}
 
-###
+    {
+        "id": 121,
+        "paciente_id": 1,
+        "doctor_id": 1,
+        "fecha": "2024-03-01T05:00:00.000Z",
+        "hora": "09:00:00",
+        "motivo_consulta": "Control de potro",
+        "estado": "realizada"
+    }
+
+
+
+### DELETE - Eliminar cita
 DELETE http://localhost:3000/api/cita HTTP/1.1
 Content-Type: application/json
 
 {
     "id": 1
 }
-#####
 
 
+################################
+##       DOCTOR
+################################
 
+### GET - Listar todos los doctores
+GET http://localhost:3000/api/doctor
 
-GET http://localhost:3000/api/doctor 
-#####
+### POST - Crear doctor
+POST http://localhost:3000/api/doctor HTTP/1.1
+Content-Type: application/json
+
+{
+  "nombre": "Prueba" ,
+  "correo": "prueba@doctor.com",
+  "telefono": 1234567899,
+  "numero_consultorio": 1234567654
+}
+
+### PUT - Actualizar doctor
 PUT http://localhost:3000/api/doctor
 Content-Type: application/json
 
 {
-    "id": 1,
-    "nombre": "Dr. Juan Carlos Ramírez",
+    "id": 21,
+    "nombre": "Dr.Carlos Ramírez",
     "correo": "j.ramirez@clinica.com",
     "telefono": "3001234567",
     "numero_consultorio": 101
 }
 
-####
+### DELETE - Eliminar doctor
 DELETE http://localhost:3000/api/doctor HTTP/1.1
 Content-Type: application/json
 
 {
     "id": 1
 }
-#####
 
 
+################################
+##       ESPECIALIDAD
+################################
 
-GET http://localhost:3000/api/especialidad 
-#####
+### GET - Listar todas las especialidades
+GET http://localhost:3000/api/especialidad
+
+### POST - Crear especialidad
+POST http://localhost:3000/api/especialidad HTTP/1.1
+Content-Type: application/json
+
+{
+  "nombre": "Prueba" ,
+  "descripcion": "Cirujano maxilofacial"
+}
+
+### DELETE - Eliminar especialidad
 DELETE http://localhost:3000/api/especialidad HTTP/1.1
 Content-Type: application/json
 
 {
     "id": 1
 }
-#####
 
 
+################################
+##       ESPECIALISTA
+################################
 
+### GET - Listar todos los especialistas
+GET http://localhost:3000/api/especialista
 
-GET http://localhost:3000/api/especialista 
-#####
+### POST - Crear especialista
+POST http://localhost:3000/api/especialista HTTP/1.1
+Content-Type: application/json
+
+{
+  "doctor_id": 1,
+  "especialidad_id": 2
+}
+
+### DELETE - Eliminar especialista
 DELETE http://localhost:3000/api/especialista HTTP/1.1
 Content-Type: application/json
 
 {
     "id": 1
 }
-#####
 
 
+################################
+##       RECETAS
+################################
 
-
+### GET - Listar todas las recetas
 GET http://localhost:3000/api/receta
-####
+
+### GET - Clonar receta
+GET http://localhost:3000/api/receta_clone
+
+### POST - Crear receta
+POST http://localhost:3000/api/receta HTTP/1.1
+Content-Type: application/json
+
+{
+  "cita_id": 2, 
+  "medicamento": "Omeprazol", 
+  "dosis": "200mg", 
+  "instruccion": "20mg cada 2 horas", 
+  "fecha_emision": "2024-03-01"
+}
+
+### DELETE - Eliminar receta
 DELETE http://localhost:3000/api/receta HTTP/1.1
 Content-Type: application/json
 
 {
     "id": 1
 }
-#####
 
 
+################################
+##       CONSULTAS ESPECIALES
+################################
+
+
+
+
+### GET - Top 5 pacientes
+GET http://localhost:3000/api/paciente/top-5
+
+### GET - Pacientes sin cita
+GET http://localhost:3000/api/paciente/sin-cita
+
+### GET - Citas pendientes
+GET http://localhost:3000/api/cita/pendiente
+
+
+### GET - Citas de marzo (control)
+GET http://localhost:3000/api/citas/marzo/control
+
+### GET - Doctor con citas
+GET http://localhost:3000/api/doctor/citas
+
+### GET - Estadísticas de doctor
+GET http://localhost:3000/api/doctor/estadisticas
+
+### GET - Doctor con citas sobre promedio
+GET http://localhost:3000/api/doctor/citas-sobre-promedio
+
+### GET - Doctor por especialidad
+GET http://localhost:3000/api/doctor/especialidad
+
+### GET - Especialidad con múltiples doctores
+GET http://localhost:3000/api/especialidad/con-multiples-doctores
+
+### DELETE - Recetas de citas canceladas
+DELETE http://localhost:3000/api/receta/citas-canceladas
