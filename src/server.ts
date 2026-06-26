@@ -1,7 +1,7 @@
 import express from "express"
 import cors from "cors"
 import pool from "./db.js"
-import type { Paciente, Cita, Doctor, Especialidad, Especialista, Receta } from "./tipos.js"
+import type { Paciente, Cita, CitaEstado, Doctor, Especialidad, Especialista, Receta } from "./tipos.js"
 import { inicializarBD } from "./init.js"
 
 const app = express()
@@ -18,7 +18,7 @@ app.use(express.json())
 app.get("/api/paciente", async (_req, res) => {
   try {
     const { rows } = await pool.query<Paciente>(
-      "SELECT * FROM paciente_clone ORDER BY id ASC"
+      "SELECT * FROM paciente ORDER BY id ASC"
     )
     res.json(rows)
   } catch (error) {
@@ -78,7 +78,29 @@ app.put("/api/paciente", async (req, res) => {
     res.status(500).json({ error: "Error al actualizar" });
   }
 });
+// POST
+app.post("/api/paciente", async (req, res) => {
+  const { nombre, correo, telefono, fecha_nacimiento, fecha_registro} = req.body as { id: number; nombre: string; correo: string, telefono: string, fecha_nacimiento: string, fecha_registro: string}
 
+  if (!nombre.trim() || !correo.trim() || !telefono || !fecha_nacimiento.trim() || !fecha_registro.trim()) {
+    res.status(400).json({ error: "El campo es requerido" })
+    return
+  }
+
+  try {
+    const { rows } = await pool.query<Paciente>(
+      `INSERT INTO paciente (nombre, correo, telefono, fecha_nacimiento, fecha_registro)
+       VALUES ($1, $2, $3, $4, $5)
+       RETURNING *`,
+      [nombre.trim(), correo.trim(), telefono.trim(), fecha_nacimiento.trim(), fecha_registro.trim()]
+    )
+
+    res.status(201).json(rows[0])
+  } catch (error) {
+    console.error("Error al crear mensaje:", error)
+    res.status(500).json({ error: "Error al crear el paciente" })
+  }
+})
 
 
 
