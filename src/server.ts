@@ -12,9 +12,20 @@
 
   // ─── API REST ───
 
-
   // Pacientes
-  //GET
+  // GET
+  app.get("/api/paciente", async (_req, res) => {
+    try {
+      const { rows } = await pool.query<Paciente>(
+        "SELECT * FROM paciente ORDER BY id ASC"
+      )
+      res.json(rows)
+    } catch (error) {
+      console.error("Error al listar los pacientes:", error)
+      res.status(500).json({ error: "Error al obtener los pacientes" })
+    }
+  })
+
   app.get("/api/paciente_clone", async (_req, res) => {
     try {
       const { rows } = await pool.query<Paciente>(
@@ -22,8 +33,38 @@
       )
       res.json(rows)
     } catch (error) {
-      console.error("Error al listar los pacientes:", error)
+      console.error("Error al listar los pacientes clonados:", error)
       res.status(500).json({ error: "Error al obtener los pacientes" })
+    }
+  })
+
+  // PUT
+  app.put("/api/paciente", async (req, res) => {
+    const { id, nombre, correo, fecha_nacimiento, fecha_registro } = req.body;
+
+    if (!id) {
+      res.status(400).json({ error: "El campo 'id' es requerido" });
+      return;
+    }
+
+    try {
+      const { rows } = await pool.query<Paciente>(
+        `UPDATE paciente
+         SET nombre = $1, correo = $2, fecha_nacimiento = $3, fecha_registro = $4
+         WHERE id = $5
+         RETURNING *`,
+        [nombre, correo, fecha_nacimiento, fecha_registro, id]
+      );
+
+      if (rows.length === 0) {
+        res.status(404).json({ error: "Paciente no encontrado" });
+        return;
+      }
+
+      res.status(200).json(rows[0]);
+    } catch (error) {
+      console.error("Error al actualizar paciente:", error);
+      res.status(500).json({ error: "Error al actualizar" });
     }
   })
 
