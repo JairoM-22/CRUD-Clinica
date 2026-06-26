@@ -15,7 +15,7 @@ app.use(express.json())
 
 // Pacientes
 //GET
-app.get("/api/paciente_clone", async (_req, res) => {
+app.get("/api/paciente", async (_req, res) => {
   try {
     const { rows } = await pool.query<Paciente>(
       "SELECT * FROM paciente_clone ORDER BY id ASC"
@@ -50,7 +50,7 @@ app.delete("/api/paciente", async (req, res) => {
   }
 })
 //PUT
-app.put("/api/paciente_clone", async (req, res) => {
+app.put("/api/paciente", async (req, res) => {
   const { id, nombre, correo, fecha_nacimiento, fecha_registro } = req.body;
 
   if (!id) {
