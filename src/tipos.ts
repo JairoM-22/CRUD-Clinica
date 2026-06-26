@@ -1,5 +1,5 @@
 type FechaISO = string
-export type CitaEstado = "pendiente" | "confirmada" | "cancelada" | "completada"
+export type CitaEstado = "pendiente" | "confirmada" | "cancelada" | "realizada"
 
 export interface Paciente {
   id: number

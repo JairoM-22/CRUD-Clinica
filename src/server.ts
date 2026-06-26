@@ -50,7 +50,7 @@ import { inicializarBD } from "./init.js"
   })
   //PUT
   app.put("/api/paciente", async (req, res) => {
-    const { id, nombre, correo, fecha_nacimiento, fecha_registro } = req.body;
+    const { id, nombre, correo, telefono, fecha_nacimiento, fecha_registro } = req.body;
 
     if (!id) {
       res.status(400).json({ error: "El campo 'id' es requerido" });
@@ -60,10 +60,10 @@ import { inicializarBD } from "./init.js"
     try {
       const { rows } = await pool.query<Paciente>(
         `UPDATE paciente
-        SET nombre = $1, correo = $2, fecha_nacimiento = $3, fecha_registro = $4
+        SET nombre = $1, correo = $2, telefono = $3, fecha_nacimiento = $4, fecha_registro = $5
         WHERE id = $5
         RETURNING *`,
-        [nombre, correo, fecha_nacimiento, fecha_registro, id]
+        [nombre, correo, telefono, fecha_nacimiento, fecha_registro, id]
       );
 
       if (rows.length === 0) {
