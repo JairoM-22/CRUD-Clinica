@@ -293,7 +293,7 @@ import { inicializarBD } from "./init.js"
   app.get("/api/especialidad", async (_req, res) => {
     try {
       const { rows } = await pool.query<Especialidad>(
-        "SELECT * FROM especialidad ORDER BY id ASC"
+        "SELECT * FROM especialidad ORDER BY id asc"
       )
       res.json(rows)
     } catch (error) {
@@ -384,7 +384,7 @@ import { inicializarBD } from "./init.js"
   app.get("/api/especialista", async (_req, res) => {
     try {
       const { rows } = await pool.query<Especialista>(
-        "SELECT * FROM especialista ORDER BY id DESC"
+        "SELECT * FROM especialista ORDER BY id asc"
       )
       res.json(rows)
     } catch (error) {
@@ -476,7 +476,7 @@ import { inicializarBD } from "./init.js"
   app.get("/api/receta", async (_req, res) => {
     try {
       const { rows } = await pool.query<Receta>(
-        "SELECT * FROM receta ORDER BY id DESC"
+        "SELECT * FROM receta ORDER BY id asc"
       )
       res.json(rows)
     } catch (error) {
